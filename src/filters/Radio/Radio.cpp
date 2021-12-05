@@ -17,14 +17,18 @@ void Radio::SetParam(const size_t &key, bool value) {
 }
 
 void Radio::Process(pcmSample *data, uint32_t size) {
-    update_filter_freq(m_settings.freq_low, m_settings.freq_hi, m_last_eq_in, f);
-    update_filter_freq(m_settings.o_freq_lo, m_settings.freq_hi, m_last_eq_out, f_o);
+    updateFilterFreq(m_settings.freq_low, m_settings.freq_hi, m_last_eq_in, f);
+    updateFilterFreq(m_settings.o_freq_lo, m_settings.freq_hi, m_last_eq_out, f_o);
 
     const auto fudge = static_cast<float>(m_settings.fudge);
-    constexpr auto frame_count = 256;
+    constexpr auto frameCount = 256;
 
-    float* audioData[6];
-    for(int i = 0; i<6; i++){
-        if(data->channels.left[i])
-    }
+    //audiodata may needs to be data->sample
+    float audioData[2];
+    audioData[0] = static_cast<float>(data->channels.left);
+    audioData[1] = static_cast<float>(data->channels.right);
+
+    // process the audiodata per frame : f->process(frameCount, audioData), f_o->process(frameCount, audioData)
+
+
 }

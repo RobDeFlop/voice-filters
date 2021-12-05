@@ -2,10 +2,6 @@
 
 #include "main.h"
 #include "RadioSettings.h"
-#include <utility>
-#include <memory>
-
-
 
 class Radio : public alt::IAudioFilter {
 public:
