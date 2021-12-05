@@ -19,13 +19,15 @@ endmacro()
 
 GroupSources(${CMAKE_SOURCE_DIR}/src "Source Files")
 
-add_library(voice-filters SHARED ${PROJECT_SOURCE_FILES})
+
+add_subdirectory(./vendor/dspfilters/shared/DSPFilters)
 
 include_directories(
     ./src
-    ./vendor/dspfilters/shared/DSPFilters
+    ./vendor/dspfilters/shared/DSPFilters/include/DspFilters
 )
 
+add_library(voice-filters SHARED ${PROJECT_SOURCE_FILES})
 
 set_target_properties(voice-filters PROPERTIES
     OUTPUT_NAME "voice-filters"
@@ -40,7 +42,6 @@ set(CMAKE_CONFIGURATION_TYPES Debug Release)
 
 target_include_directories(voice-filters PRIVATE
     ./cpp-sdk
-    ./vendor/dspfilters/shared/DSPFilters/include
 )
 
 target_link_libraries(voice-filters PUBLIC DSPFilters)

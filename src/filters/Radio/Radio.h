@@ -2,6 +2,7 @@
 
 #include "main.h"
 #include "RadioSettings.h"
+#include "Dsp/Bessel.h"
 
 class Radio : public alt::IAudioFilter {
 public:
@@ -15,8 +16,8 @@ public:
 private:
     RadioSettings m_settings;
 
-    std::unique_ptr<Dsp::Filter> f = std::make_unique<Dsp::SmoothedFilterDesignDsp::Butterworth::Design::BandPass<4>,7, Dsp::DirectFormII>>(1024);
-    std::unique_ptr<Dsp::Filter> f_o = std::make_unique<Dsp::SmoothedFilterDesignDsp::Butterworth::Design::BandPass<4>,7, Dsp::DirectFormII>>(1024);
+    //std::unique_ptr<Dsp::Filter> f = std::make_unique<Dsp::SmoothedFilterDesignDsp::Butterworth::Design::BandPass<4>,7, Dsp::DirectFormII>>(1024);
+    //std::unique_ptr<Dsp::Filter> f_o = std::make_unique<Dsp::SmoothedFilterDesignDsp::Butterworth::Design::BandPass<4>,7, Dsp::DirectFormII>>(1024);
 
     std::pair<double, double> m_last_eq_in;
     std::pair<double, double> m_last_eq_out;

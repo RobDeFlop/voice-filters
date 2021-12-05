@@ -17,8 +17,8 @@ void Radio::SetParam(const size_t &key, bool value) {
 }
 
 void Radio::Process(pcmSample *data, uint32_t size) {
-    updateFilterFreq(m_settings.freq_low, m_settings.freq_hi, m_last_eq_in, f);
-    updateFilterFreq(m_settings.o_freq_lo, m_settings.freq_hi, m_last_eq_out, f_o);
+    //updateFilterFreq(m_settings.freq_low, m_settings.freq_hi, m_last_eq_in, f);
+    //updateFilterFreq(m_settings.o_freq_lo, m_settings.freq_hi, m_last_eq_out, f_o);
 
     const auto fudge = static_cast<float>(m_settings.fudge);
     constexpr auto frameCount = 256;
