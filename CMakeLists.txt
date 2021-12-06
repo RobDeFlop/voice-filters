@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13)
-
+set(CMAKE_CXX_STANDARD 17)
 project(voice-filters)
 
 file(GLOB_RECURSE PROJECT_SOURCE_FILES "src/*.h" "src/*.cpp")
@@ -22,26 +22,27 @@ GroupSources(${CMAKE_SOURCE_DIR}/src "Source Files")
 
 add_subdirectory(./vendor/dspfilters/shared/DSPFilters)
 
-include_directories(
-    ./src
-    ./vendor/dspfilters/shared/DSPFilters/include/DspFilters
-)
+include_directories(SYSTEM
+        ./src
+        ./vendor/dspfilters/shared/DSPFilters/include/
+        )
 
 add_library(voice-filters SHARED ${PROJECT_SOURCE_FILES})
 
 set_target_properties(voice-filters PROPERTIES
-    OUTPUT_NAME "voice-filters"
-    SUFFIX ".dll"
-    CXX_STANDARD 20
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/BIN/"
-    RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/BIN/Debug/"
-    RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/BIN/Release/"
-)
+        OUTPUT_NAME "voice-filters"
+        SUFFIX ".dll"
+        CXX_STANDARD 20
+        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/BIN/"
+        RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/BIN/Debug/"
+        RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/BIN/Release/"
+        )
 
 set(CMAKE_CONFIGURATION_TYPES Debug Release)
 
-target_include_directories(voice-filters PRIVATE
-    ./cpp-sdk
-)
+target_include_directories(voice-filters SYSTEM PRIVATE
+        ./cpp-sdk
+        ./vendor/dspfilters/shared/DSPFilters/include/
+        )
 
 target_link_libraries(voice-filters PUBLIC DSPFilters)
