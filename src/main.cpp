@@ -1,11 +1,14 @@
 #include "main.h"
 #include "filters/MuteChannel/MuteChannel.h"
+#include "filters/Radio/Radio.h"
 
 extern "C" __declspec(dllexport)
 IAudioFilter* CreateFilter(const size_t& nameHash)
 {
     if(nameHash == IAudioFilter::hash("MuteChannel"))
         return new MuteChannel();
+    if(nameHash == IAudioFilter::hash("Radio"))
+        return new Radio();
 
     return nullptr;
 }
