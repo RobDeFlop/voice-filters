@@ -1,3 +1,13 @@
 BUILD
 src/.vs
 .idea
+/.vs/voice-filters/v16/.suo
+/.vs/voice-filters/v16/Browse.VC.db
+/.vs/cmake.db
+/.vs/CMake Overview
+/.vs/voice-filters/v16/ipch/AutoPCH/b0391cb2ff07af3f/DOCUMENTATION.ipch
+/.vs/ProjectSettings.json
+/.vs/voice-filters/v16/ipch/AutoPCH/2a3f54d03b56e2d3/RADIO.ipch
+/.vscode/settings.json
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
